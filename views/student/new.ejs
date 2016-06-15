@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>student index</title>
+</head>
+<style type="text/css">
+body{
+	margin: 0px;
+	padding: 0px;
+}
+	.heading{
+		width: 100%;
+		height: 200px;
+		background-color: #5C6BC0;
+		display: table-row;
+		float: left;
+		margin-bottom: 50px;
+	}
+	.logo{
+		width: 20%;
+		height: 10%;
+		float: left;
+	}
+	.school{
+		width: 30%;
+		height: 10%;
+		text-align: center;
+		float: left;
+	}
+	.date{
+		width: 30%;
+		height: 10%;
+		float: right;
+	}
+	.container{
+		margin-top: 2%;
+		width: 90%;
+		height: 40%;
+	}
+	.subject{
+		width: 30%;
+		height: 40%;
+		float: left;
+	}
+	.mark{
+		width: 40%;
+		height: 40%;
+		float: left;
+	}
+	input[type=number]{
+		padding: 7px;
+		margin-top: 10px;
+		width: 400px;
+		font-size: 25px;
+	}
+	input[type=text]{
+		padding: 7px;
+		width: 400px;
+		font-size: 25px;
+	}
+	input[type=submit]{
+		padding: 7px;
+		width: 150px;
+		font-size: 25px;
+		margin: 0px;
+		margin-top: 20px;
+	}
+	.max input[type=number]{
+		padding: 7px;
+		margin-top: 10px;
+		width: 100px;
+		font-size: 25px;
+	}
+	select{
+		padding: 10px;
+		width: 400px;
+		font-size: 25px;
+		background-color: white;
+	}
+	form{
+		margin-left: 200px;
+	}
+	.id{
+		margin-top: 0px;
+	}
+	.heading h1{
+		margin: 0px;
+		margin-top: 15%;
+		color: white;
+	}
+	.id h1{
+		color: #616161;
+	}
+	.exam h1{
+		color: #616161;
+	}
+	.name
+	h1{
+		color: #616161;
+	}
+	 .subject
+	 h1{
+		color: #616161;
+	}
+</style>
+<body>
+<header>
+	<div class="heading">
+	<div class="logo">
+	<h1>SCHOOL LOGO</h1>
+	</div>
+	<div class="school">
+	<h1>SCHOOL NAME</h1>
+	</div>
+	<div class="date">
+	<h1>DATE : <%= Date() %></h1>
+	</div>
+	</div>
+	</header>
+	<div class="input">
+		<form action="/students" method="post">
+		<div class="id">
+			<h1>STUDENT ID</h1>
+			<input type="number" name="sid" placeholder="enter id" required>
+		</div>
+			<div class="name">
+			<h1>STUDENT NAME</h1>
+			<input type="text" name="studentName" placeholder="enter name" required>
+		</div>
+		<div class="exam">
+			<h1>EXAM TYPE</h1>
+			<select name="select" required>
+			  <option name="select" value="halfe">PRE HALF EARLY</option>
+			  <option name="select" value="mitame">MITAME</option>
+			  <option name="select" value="half">HALE EARLY</option>
+			  <option name="select" value="final" selected>FINAl</option>
+			</select>
+		</div>
+		<div class="container">
+			<div class="subject">
+				<h1>TAMIL</h1>
+				<h1>ENGLISH</h1>
+				<h1>SCIENCE</h1>
+				<h1>MATHAMATICS</h1>
+				<h1>HISORY</h1>
+			</div>
+			<div class="mark">
+				<input id="txt1" type="number" name="mark1"  onkeyup="sum();" placeholder="enter mark one" required><br>
+				<input id="txt2" type="number" name="mark2"  onkeyup="sum();" placeholder="enter mark two" required><br>
+				<input id="txt3" type="number" name="mark3"  onkeyup="sum();" placeholder="enter mark three" required><br>
+				<input id="txt4" type="number" name="mark4"  onkeyup="sum();" placeholder="enter mark four" required><br>
+				<input id="txt5" type="number" name="mark5"  onkeyup="sum();" placeholder="enter mark five" required><br>
+				<input id="result" type="number" name="total" placeholder="TOTAL" required readonly><br>
+				<input type="submit" name="submit">
+			</div>
+			<div class="max">
+				<input type="number" value="0" id="max1" name="max1" placeholder="MAX" readonly><br>
+				<input type="number" value="0" id="max2" name="max2" placeholder="MAX" readonly><br>
+				<input type="number" value="0" id="max3" name="max3" placeholder="MAX" readonly><br>
+				<input type="number" value="0" id="max4" name="max4" placeholder="MAX" readonly><br>
+				<input type="number" value="0" id="max5" name="max5" placeholder="MAX" readonly><br>
+			</div>
+		</div>
+
+		</form>
+
+	</div>
+
+
+</body>
+<script type="text/javascript">
+	function sum() {
+            var txtFirstNumberValue = document.getElementById('txt1').value;
+            var txtSecondNumberValue = document.getElementById('txt2').value;
+            var txtThirdNumberValue = document.getElementById('txt3').value;
+            var txtForthNumberValue = document.getElementById('txt4').value;
+            var txtfiveNumberValue = document.getElementById('txt5').value;
+
+
+            var maxv1 = document.getElementById('max1').value;
+            var maxv2 = document.getElementById('max2').value;
+            var maxv3 = document.getElementById('max3').value;
+            var maxv4 = document.getElementById('max4').value;
+            var maxv5 = document.getElementById('max5').value;
+
+            var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue) + parseInt(txtThirdNumberValue)+ parseInt(txtForthNumberValue)+ parseInt(txtfiveNumberValue);
+            if (!isNaN(result)) {
+                document.getElementById('result').value = result;
+
+                document.getElementById('max1').value = Math.max(
+                	txtFirstNumberValue,document.getElementById('max1').value);
+                document.getElementById('max2').value = Math.max(txtSecondNumberValue,document.getElementById('max2').value);
+                document.getElementById('max3').value = Math.max(
+                	txtThirdNumberValue,document.getElementById('max3').value);
+                document.getElementById('max4').value = Math.max(
+                	txtForthNumberValue,document.getElementById('max4').value);
+                document.getElementById('max5').value = Math.max(
+                	txtfiveNumberValue,document.getElementById('max5').value);
+            }
+
+
+            // if (txtFirstNumberValue == maxv1) {
+
+            // }
+
+            // if (txtSecondNumberValue == maxv2) {
+
+            // }
+
+            // if (txtThirdNumberValue == maxv3) {
+
+            // }
+
+            // if (txtForthNumberValue == maxv4) {
+
+            // }
+
+            // if (txtfiveNumberValue == maxv5) {
+
+            // }
+
+
+
+
+        }
+        
+</script>
+</html>

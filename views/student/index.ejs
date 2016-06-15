@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style type="text/css">
+    .Table
+    {
+        box-shadow: 5px 5px 5px #888888;
+        display: table;
+        background-color: #5C6BC0;
+        margin-left: 20px;
+        width: 60%;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+    .Heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+    }
+    .Row
+    {
+        display: table-row;
+    }
+    .Cell
+    {
+
+        display: table-cell;
+        border: solid white;
+        border-width: thin;
+        padding: 20px;
+    }
+    a{
+        margin-left: 55px;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        background-color: #EC407A;
+        color: white;
+        width: 150px;
+        text-align: center;
+    }
+    p{
+        margin: 5px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+    @media only screen and (max-device-width: 720px) {
+    h1{
+    margin-top:5px;
+    font-size: 25px;
+    width:300px;
+    float:left;
+    text-align: center;
+    }
+
+ .Table
+    {
+        box-shadow: 5px 5px 5px #888888;
+        display: table;
+        margin-left: 0px;
+        background-color: #29B6F6;
+        width: 100%;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+    .Heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+    }
+    .Row
+    {
+        display: table-row;
+    }
+    .Cell
+    {
+
+        display: table-cell;
+        border: solid white;
+        border-width: thin;
+        padding: 5px;
+    }
+    a{
+        text-decoration: none;
+        padding: 5px;
+        display: block;
+        background-color: #EC407A;
+        color: white;
+        width: 100px;
+        text-align: center;
+    }
+    p{
+        margin: 5px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+}
+</style>
+
+
+<div class="Table">
+    <div class="Title">
+        <h1>STUDENTS INDEX PAGE</h1>
+    </div>
+    <div class="Heading">
+        <div class="Cell">
+            <p>STUDENT ID</p>
+        </div>
+        <div class="Cell">
+            <p>STUDENT NAME</p>
+        </div>
+        <div class="Cell">
+            <p>EXAM TYPE</p>
+        </div>
+        <div class="Cell">
+            <p>TAMIL</p>
+        </div>
+        <div class="Cell">
+            <p>ENGLISH</p>
+        </div>
+        <div class="Cell">
+          <p>SCIENCE</p>
+        </div>
+        <div class="Cell">
+              <p>MATHAMATICS</p>
+        </div>
+        <div class="Cell">
+          <p>HISORY</p>
+        </div>
+        <div class="Cell">
+          <p>ACTION</p>
+        </div>
+    </div>
+    <% _.each(model, function(model){ %>
+    <div class="Row">
+        <div class="Cell">
+            <p><%= model.id %></p>
+        </div>
+        <div class="Cell">
+            <p><%= model.studentName %></p>
+        </div>
+        <div class="Cell">
+            <p><%= model.select %></p>
+        </div>
+         <div class="Cell">
+            <p><%= model.mark1 %></p><br>
+            <p><%= model.max1 %></p>
+        </div>
+        <div class="Cell">
+           <p><%= model.mark2 %></p><br>
+           <p><%= model.max2 %></p>
+       </div>
+       <div class="Cell">
+          <p><%= model.mark3 %></p><br>
+          <p><%= model.max3 %></p>
+      </div>
+      <div class="Cell">
+         <p><%= model.mark4 %></p><br>
+         <p><%= model.max4 %></p>
+     </div>
+     <div class="Cell">
+        <p><%= model.mark5 %></p><br>
+        <p><%= model.max5 %></p>
+    </div>
+
+        <div class="Cell">
+            <p><a class="a1" href ="/students/<%= model.id %>/edit">EDIT</a></p>
+            <p><a class="a2" href ="javascript:AlertIt(<%= model.id %>);">DELETE</a></p>
+            <p><a class="a3" href ="/students/<%= model.id %>">SHOW</a></p>
+
+        </div>
+    </div>
+    <% }); %>
+</div>
+<a id="a" href="/students/new">CREATE NEW</a><br>
+<script type="text/javascript">
+        function AlertIt(id) {
+			var answer = window.confirm("ARE YOU SURE");
+			if (answer == true){
+        alert(id);
+			window.location="http://localhost:1337/students/"+id+"/delete";
+			}
+    }
+</script>
+
+</html>
